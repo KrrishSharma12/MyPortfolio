@@ -9,7 +9,7 @@ Welcome to my personal portfolio website! This site showcases my skills, project
 Hi, I'm **Krish Sharma** – a passionate front-end developer with experience in building responsive and interactive web applications. I enjoy turning ideas into functional websites using modern web technologies.
 
 - **Location:** Bengaluru, India  
-- **Email:** your.email@example.com  
+- **Email:** krishsharma1842@gmail.com  
 - **LinkedIn:** [Krish Sharma](https://www.linkedin.com/in/krish-sharma-47126b325)  
 - **GitHub:** [KrrishSharma12](https://github.com/KrrishSharma12)
 
@@ -54,3 +54,4 @@ Here are some of my key projects:
 
 ```bash
 git clone https://github.com/KrrishSharma12/MyPortfolio.git
+
