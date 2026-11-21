@@ -48,7 +48,7 @@ export default function Contact() {
       return;
     }
     try {
-      const r = await fetch(ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(d) });
+      const r = await fetch("https://my-portfolio-gilt-six-75.vercel.app/send-email", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(d) });
     console.log(r);
     
       if (r.ok) {
