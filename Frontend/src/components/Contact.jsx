@@ -49,6 +49,8 @@ export default function Contact() {
     }
     try {
       const r = await fetch(ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(d) });
+    console.log(r);
+    
       if (r.ok) {
         setD(EMPTY);
         setState({ kind: "ok", msg: "Message sent. Thanks, I’ll reply soon.", busy: false });
