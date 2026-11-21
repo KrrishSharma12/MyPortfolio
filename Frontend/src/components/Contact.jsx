@@ -48,22 +48,37 @@ export default function Contact() {
       return;
     }
     try {
-      const r = await fetch("https://my-portfolio-gilt-six-75.vercel.app/send-email", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(d) });
-    console.log(r);
-    
-      if (r.ok) {
-        setD(EMPTY);
-        setState({ kind: "ok", msg: "Message sent. Thanks, I’ll reply soon.", busy: false });
+      //   const r = await fetch("https://my-portfolio-gilt-six-75.vercel.app/send-email", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(d) });
+      // console.log(r);
 
-      }
-      else {
-        const response = await r.json().catch(() => null);
-        setState({
-          kind: "bad",
-          msg: response?.message || `Message failed to send (${r.status}). Try again or use the email link.`,
-          busy: false,
-        });
-      }
+      //   if (r.ok) {
+      //     setD(EMPTY);
+      //     setState({ kind: "ok", msg: "Message sent. Thanks, I’ll reply soon.", busy: false });
+
+      //   }
+      //   else {
+      //     const response = await r.json().catch(() => null);
+      //     setState({
+      //       kind: "bad",
+      //       msg: response?.message || `Message failed to send (${r.status}). Try again or use the email link.`,
+      //       busy: false,
+      //     });
+      //   }
+      const response = await fetch(
+        "https://my-portfolio-gilt-six-75.vercel.app/send-email",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const responseText = await response.text();
+
+      console.log("Status:", response.status);
+      console.log("Response body:", responseText);
 
     } catch (e) {
       setState({ kind: "bad", msg: "Message failed to send. Try again or use the email link.", busy: false });
