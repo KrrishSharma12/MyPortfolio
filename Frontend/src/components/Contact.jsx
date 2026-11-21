@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Section from "./Section";
 import { PROFILE } from "../data";
-const ENDPOINT = import.meta.env.VITE_CONTACT_ENDPOINT || "";
+const ENDPOINT = import.meta.env.VITE_CONTACT_ENDPOINT || "https://my-portfolio-gilt-six-75.vercel.app/send-email";
 const EMPTY = { name: "", email: "", subject: "", message: "" };
 function validate(d) {
   const e = {};
@@ -55,7 +55,12 @@ export default function Contact() {
 
       }
       else {
-        setState({ kind: "bad", msg: e ? e.message : "Message failed to send. Try again or use the email link.", busy: false });
+        const response = await r.json().catch(() => null);
+        setState({
+          kind: "bad",
+          msg: response?.message || `Message failed to send (${r.status}). Try again or use the email link.`,
+          busy: false,
+        });
       }
 
     } catch (e) {

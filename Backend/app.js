@@ -4,8 +4,20 @@ import cors from "cors";
 import { sendEmail } from "./sendEmail.js";
 const app = express();
 app.use(express.json());
+const allowedOrigins = [
+    "https://krish-sharma.vercel.app",
+    "https://my-portfolio-gilt-six-75.vercel.app",
+    process.env.FRONTEND_URL,
+].filter(Boolean);
+
 app.use(cors({
-    origin: "https://krish-sharma.vercel.app", 
+    origin(origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Origin not allowed by CORS"));
+        }
+    },
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
 }));
