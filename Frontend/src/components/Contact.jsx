@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Section from "./Section";
 import { PROFILE } from "../data";
-const ENDPOINT = import.meta.env.VITE_CONTACT_ENDPOINT || "https://my-portfolio-gilt-six-75.vercel.app/send-email";
+const ENDPOINT = import.meta.env.VITE_API_URL || "https://my-portfolio-gilt-six-75.vercel.app/send-email";
 const EMPTY = { name: "", email: "", subject: "", message: "" };
 function validate(d) {
   const e = {};
@@ -48,7 +48,7 @@ export default function Contact() {
       return;
     }
     try {
-      const r = await fetch(VITE_API_URL, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(d) });
+      const r = await fetch(ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(d) });
       if (r.ok) {
         setD(EMPTY);
         setState({ kind: "ok", msg: "Message sent. Thanks, I’ll reply soon.", busy: false });
