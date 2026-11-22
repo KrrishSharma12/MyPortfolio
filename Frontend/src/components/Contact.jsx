@@ -49,7 +49,10 @@ export default function Contact() {
     }
     try {
         const r = await fetch("https://my-portfolio-gilt-six-75.vercel.app/send-email", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(d) });
-      console.log(r);
+      const responseText = await r.text();
+
+      console.log("Status:", r.status);
+      console.log("Response body:", responseText);
 
         if (r.ok) {
           setD(EMPTY);
