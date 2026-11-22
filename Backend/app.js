@@ -7,7 +7,7 @@ app.use(express.json());
 const allowedOrigins = [
     "https://krish-sharma.vercel.app",
     "https://my-portfolio-gilt-six-75.vercel.app",
-    process.env.FRONTEND_URL,
+    "http://localhost:5173",
 ].filter(Boolean);
 
 app.use(cors({
