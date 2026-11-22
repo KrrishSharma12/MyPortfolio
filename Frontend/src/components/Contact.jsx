@@ -48,12 +48,8 @@ export default function Contact() {
       return;
     }
     try {
-        const r = await fetch("https://my-portfolio-gilt-six-75.vercel.app/send-email", { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(d) });
+        const r = await fetch(ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(d) });
       const responseText = await r.text();
-
-      console.log("Status:", r.status);
-      console.log("Response body:", responseText);
-
         if (r.ok) {
           setD(EMPTY);
           setState({ kind: "ok", msg: "Message sent. Thanks, I’ll reply soon.", busy: false });
@@ -67,22 +63,7 @@ export default function Contact() {
             busy: false,
           });
         }
-      // const response = await fetch("https://my-portfolio-gilt-six-75.vercel.app/send-email",
-      //   {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     accept: "application/json",
-      //     body: JSON.stringify(d),
-      //   }
-      // );
-
-      // const responseText = await response.text();
-
-      // console.log("Status:", response.status);
-      // console.log("Response body:", responseText);
-
+      
     } catch (e) {
       setState({ kind: "bad", msg: "Message failed to send. Try again or use the email link.", busy: false });
     }
