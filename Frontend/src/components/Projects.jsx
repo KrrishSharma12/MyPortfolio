@@ -23,7 +23,7 @@ export default function Projects() {
           </article>
         ))}
       </div>
-      <div className="more-p">// also built: <b style={{ color: "var(--hi)" }}>RepoPilot</b>, a VS Code extension (TypeScript, VS Code API, GitHub API) for creating and publishing GitHub repos from the editor. Link coming soon.</div>
+      {/* <div className="more-p">// also built: <b style={{ color: "var(--hi)" }}>RepoPilot</b>, a VS Code extension (TypeScript, VS Code API, GitHub API) for creating and publishing GitHub repos from the editor. Link coming soon.</div> */}
     </Section>
   );
 }
