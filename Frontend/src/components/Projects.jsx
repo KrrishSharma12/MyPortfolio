@@ -1,5 +1,6 @@
 import Section from "./Section";
 import { PROJECTS } from "../data";
+import repoPilotImage from "../assets/repopilot.png";
 export default function Projects() {
   return (
     <Section id="projects">
@@ -23,7 +24,15 @@ export default function Projects() {
           </article>
         ))}
       </div>
-      {/* <div className="more-p">// also built: <b style={{ color: "var(--hi)" }}>RepoPilot</b>, a VS Code extension (TypeScript, VS Code API, GitHub API) for creating and publishing GitHub repos from the editor. Link coming soon.</div> */}
+      <div className="more-p">
+        <img className="more-p-photo" src={repoPilotImage} alt="RepoPilot extension icon" />
+        <div className="more-p-details">
+          <b style={{ color: "var(--hi)" }}>RepoPilot</b> — a VS Code extension (TypeScript, VS Code API, GitHub API) for creating GitHub repositories, initializing Git, committing, and pushing projects directly from the editor.{" "}
+          <a href="https://marketplace.visualstudio.com/items?itemName=krishsharma.repo-pilot" target="_blank" rel="noopener noreferrer" style={{ color: "var(--acc)" }}>Install in VS Code</a>
+          {" · "}
+          <a href="https://github.com/KrrishSharma12/RepoPilot" target="_blank" rel="noopener noreferrer" style={{ color: "var(--acc)" }}>View on GitHub</a>
+        </div>
+      </div>
     </Section>
   );
 }
