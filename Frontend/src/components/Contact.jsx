@@ -30,7 +30,15 @@ export default function Contact() {
   const [errs, setErrs] = useState({});
   const [state, setState] = useState({ kind: "", msg: "", busy: false });
   const [copied, setCopied] = useState(false);
-  const set = (k) => (e) => setD((current) => ({ ...current, [k]: e.target.value }));
+  const set = (k) => (e) => {
+    setD((current) => ({ ...current, [k]: e.target.value }));
+    setErrs((current) => {
+      if (!current[k]) return current;
+      const next = { ...current };
+      delete next[k];
+      return next;
+    });
+  };
   const copy = () => {
     navigator.clipboard?.writeText(PROFILE.email).then(
       () => { setCopied(true); setTimeout(() => setCopied(false), 1800); },
@@ -41,12 +49,10 @@ export default function Contact() {
     ev.preventDefault();
     const e = validate(d);
     if (Object.keys(e).length) {
-      setTimeout(() => {
-        setErrs(e);
-      }, 6000);
-
+      setErrs(e);
       return;
     }
+    setErrs({});
     try {
         const r = await fetch(ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(d) });
       const responseText = await r.text();
